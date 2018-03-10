@@ -16,6 +16,7 @@ import android.widget.TextView;
 
 import static android.widget.TextView.*;
 
+// App on the Play Store: https://play.google.com/store/apps/details?id=c.jadon.tictactoe
 @TargetApi(16)
 public class MainActivity extends AppCompatActivity {
     // To be implemented: pop up window displaying the winner
