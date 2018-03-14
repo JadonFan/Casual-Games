@@ -16,10 +16,8 @@ import android.widget.TextView;
 
 import static android.widget.TextView.*;
 
-/**
- * Created by Jadon on 2018-03-13.
- */
 
+@TargetApi(16)
 public class TicTacToe extends MainActivity{
     // To be implemented: pop up window displaying the winner
     // For now, use the blinking textview of the winning piece at the top of the screen
