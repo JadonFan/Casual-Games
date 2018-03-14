@@ -1,124 +1,49 @@
 <?xml version="1.0" encoding="utf-8"?>
-<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constraintLayout"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@color/colorPrimaryDark"
-    android:orientation="vertical"
+    android:background="@color/red"
     tools:context="c.jadon.tictactoe.MainActivity">
 
-    <LinearLayout
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:weightSum="5">
-
-        <TextView
-            android:id="@+id/info"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="3"
-            android:background="@android:color/holo_blue_dark"
-            android:gravity="center"
-            android:text="Game"
-            android:textColor="@android:color/background_light"
-            android:textSize="20sp"
-            android:textStyle="bold" />
-
-        <Button
-            android:id="@+id/X"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@android:color/holo_green_dark"
-            android:gravity="center"
-            android:text="X"
-            android:textSize="20sp" />
-
-        <Button
-            android:id="@+id/Y"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:layout_weight="1"
-            android:background="@android:color/holo_green_dark"
-            android:gravity="center"
-            android:text="O"
-            android:textSize="20sp" />
-
-    </LinearLayout>
+        android:gravity="center_horizontal"
+        android:text="Tic Tac Toe"
+        android:textSize="60sp"
+        android:background="@color/white"
+        app:layout_constraintTop_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="parent"/>
 
     <Button
-        android:id="@+id/Restart"
-        android:layout_width="match_parent"
+        android:id="@+id/playManualOpt"
+        android:layout_width="300dp"
         android:layout_height="wrap_content"
-        android:textSize="20sp"
+        android:layout_marginBottom="50dp"
         android:gravity="center"
-        android:text="RESTART"
-        android:layout_alignParentBottom="true"
-        />
+        android:textAllCaps="false"
+        android:text="1 vs 1"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toTopOf="parent"
+        app:layout_constraintEnd_toStartOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
-    <GridLayout
-        android:id="@+id/TTTBoard"
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
-        android:columnCount="3"
-        android:rowCount="3"
-        android:layout_alignParentBottom="true">
+    <Button
+        android:id="@+id/playAIOpt"
+        android:layout_width="300dp"
+        android:layout_height="wrap_content"
+        android:textAllCaps="false"
+        android:gravity="center"
+        android:text="1 vs AI"
+        android:textSize="30sp"
+        app:layout_constraintTop_toBottomOf="@+id/playManualOpt"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toStartOf="parent" />
 
-        <Button
-            android:id="@+id/Position00"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:background="@drawable/border_button" />
 
-        <Button
-            android:id="@+id/Position01"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:background="@drawable/border_button"/>
-
-        <Button
-            android:id="@+id/Position02"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:background="@drawable/border_button"/>
-
-        <Button
-            android:id="@+id/Position10"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:background="@drawable/border_button"/>
-
-        <Button
-            android:id="@+id/Position11"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:background="@drawable/border_button"/>
-
-        <Button
-            android:id="@+id/Position12"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:background="@drawable/border_button"/>
-
-        <Button
-            android:id="@+id/Position20"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:background="@drawable/border_button"/>
-
-        <Button
-            android:id="@+id/Position21"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:background="@drawable/border_button"/>
-
-        <Button
-            android:id="@+id/Position22"
-            android:layout_columnWeight="1"
-            android:layout_rowWeight="1"
-            android:background="@drawable/border_button"/>
-
-    </GridLayout>
-
-</LinearLayout>
+</android.support.constraint.ConstraintLayout>

@@ -4,6 +4,8 @@ import android.annotation.TargetApi;
 import android.app.Activity;
 import android.graphics.Typeface;
 import android.graphics.drawable.Drawable;
+import android.media.MediaPlayer;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -13,35 +15,43 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.os.Handler;
+import java.util.Random;
 
 import static android.widget.TextView.*;
 
 
 @TargetApi(16)
-public class TicTacToe extends MainActivity{
+public class TicTacToe extends MainActivity {
     // To be implemented: pop up window displaying the winner
     // For now, use the blinking textview of the winning piece at the top of the screen
 
     public final int[] players = {R.id.X, R.id.Y};
     public String currentPlayer = "X";
     protected String[][] board = {{"", "", ""}, {"", "", ""}, {"", "", ""}};
+    protected boolean activateAI;
     private String winner;
     private int turnCount = 1;
     TextView info;
     private final int[] grid = {R.id.Position00, R.id.Position01, R.id.Position02, R.id.Position10, R.id.Position11,
             R.id.Position12, R.id.Position20, R.id.Position21, R.id.Position22};
+    private Handler operateAI;
+    MediaPlayer clickSound;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.tttboard);
         info = (TextView) findViewById(R.id.info);
+        clickSound = MediaPlayer.create(TicTacToe.this, R.raw.clicksound);
+        activateAI = getIntent().getBooleanExtra("activateAI", false);
         play();
 
         Button restart = (Button) findViewById(R.id.Restart);
         restart.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                clickSound.release();
                 finish();
                 startActivity(getIntent());
             }
@@ -54,6 +64,7 @@ public class TicTacToe extends MainActivity{
             public void onClick(View v) {
                 Button b = (Button) v;
                 b.setEnabled(false);
+                clickSound.start();
 
                 int rowNum = -1;
                 int columnNum = -1;
@@ -107,6 +118,10 @@ public class TicTacToe extends MainActivity{
                 nextTurn();
                 ++turnCount;
                 if (ThreeinaRow(board) || turnCount == 10) {
+                    // When the user attempts to restart the game while the AI is still running,
+                    // we must exit the operateAI handler and be operating on the main thread for the
+                    // 'restart' button to properly work; otherwise, the app will crash.
+                    operateAI.removeCallbacksAndMessages(null);
                     endGame();
                 }
             }
@@ -123,6 +138,22 @@ public class TicTacToe extends MainActivity{
             currentPlayer = "X";
         } else {
             currentPlayer = "O";
+        }
+
+        if (activateAI && currentPlayer.equals("O")) {
+            operateAI = new Handler();
+            operateAI.postDelayed(new Runnable() {
+              public void run() {
+                  Button AIbtn;
+                  do {
+                      int i = new Random().nextInt(grid.length);
+                      AIbtn = (Button) findViewById(grid[i]);
+                  } while (!AIbtn.isEnabled());
+
+                  AIbtn.setEnabled(false);
+                  AIbtn.performClick();
+              }
+            }, 1000);
         }
     }
 
