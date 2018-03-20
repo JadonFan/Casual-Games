@@ -120,7 +120,7 @@ public class TicTacToe extends MainActivity {
                 if (ThreeinaRow(board) || turnCount == 10) {
                     // When the user attempts to restart the game while the AI is still running,
                     // we must exit the operateAI handler and be operating on the main thread for the
-                    // 'restart' button to properly work; otherwise, the app will crash.
+                    // 'restart' button to properly work; otherwise, the app might crash.
                     operateAI.removeCallbacksAndMessages(null);
                     endGame();
                 }
