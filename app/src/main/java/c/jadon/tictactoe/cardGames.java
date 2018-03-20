@@ -16,7 +16,7 @@ public class cardGames {
         int value;
         String suit;
 
-        public Card(int value, String suit) {
+        private Card(int value, String suit) {
             this.value = value;
             this.suit = suit;
         }
