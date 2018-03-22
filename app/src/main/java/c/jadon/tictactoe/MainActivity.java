@@ -21,26 +21,22 @@ import static android.widget.TextView.*;
 // App on the Play Store: https://play.google.com/store/apps/details?id=c.jadon.tictactoe
 @TargetApi(16)
 public class MainActivity extends AppCompatActivity {
-
+    @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        Button onevsone = (Button) findViewById(R.id.playManualOpt);
-        Button againstAI = (Button) findViewById(R.id.playAIOpt);
 
-        onevsone.setOnClickListener(new View.OnClickListener(){
+        Button TTTBtn = (Button) findViewById(R.id.TTT);
+        TTTBtn.setOnClickListener(new OnClickListener() {
             @Override
             public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), TicTacToe.class).putExtra("activateAI", false));
+                Intent openTTT = new Intent("c.jadon.tictactoe.TTTMenu");
+                startActivity(openTTT);
             }
         });
 
-        againstAI.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                startActivity(new Intent(getApplicationContext(), TicTacToe.class).putExtra("activateAI", true));
-            }
-        });
+
     }
+
     
 }

@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:ads="http://schemas.android.com/apk/res-auto"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:id="@+id/constraintLayout"
@@ -9,41 +10,152 @@
     tools:context="c.jadon.tictactoe.MainActivity">
 
     <TextView
+        android:id="@+id/mainTitle"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:background="@color/red"
         android:gravity="center_horizontal"
-        android:text="Tic Tac Toe"
+        android:text="Game Centre"
         android:textSize="60sp"
-        android:background="@color/white"
-        app:layout_constraintTop_toBottomOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="parent"/>
-
-    <Button
-        android:id="@+id/playManualOpt"
-        android:layout_width="300dp"
-        android:layout_height="wrap_content"
-        android:layout_marginBottom="50dp"
-        android:gravity="center"
-        android:textAllCaps="false"
-        android:text="1 vs 1"
-        android:textSize="30sp"
-        app:layout_constraintBottom_toTopOf="parent"
         app:layout_constraintEnd_toStartOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintTop_toBottomOf="parent" />
 
-    <Button
-        android:id="@+id/playAIOpt"
-        android:layout_width="300dp"
+    <com.google.android.gms.ads.AdView
+        android:id="@+id/adView"
+        android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:textAllCaps="false"
-        android:gravity="center"
-        android:text="1 vs AI"
-        android:textSize="30sp"
-        app:layout_constraintTop_toBottomOf="@+id/playManualOpt"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toStartOf="parent" />
+        android:layout_marginTop="15sp"
+        ads:adSize="BANNER"
+        ads:adUnitId="@+id/MainAD"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mainTitle" />
+
+    <TextView
+        android:id="@+id/scrollInfo"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="160sp"
+        android:background="@color/orchid"
+        android:gravity="center_horizontal"
+        android:text="scroll down for more games"
+        android:textSize="20sp"
+        ads:layout_constraintHorizontal_bias="0.0"
+        ads:layout_constraintVertical_bias="0.0"
+        app:layout_constraintBottom_toTopOf="@id/relativeLayout1"
+        app:layout_constraintLeft_toLeftOf="parent"
+        app:layout_constraintRight_toRightOf="parent"
+        app:layout_constraintTop_toBottomOf="@id/mainTitle" />
+
+    <RelativeLayout
+        android:id="@+id/relativeLayout1"
+        android:layout_width="fill_parent"
+        android:layout_height="fill_parent">
+
+        <android.support.v4.widget.NestedScrollView
+            android:id="@+id/nestedScrollView"
+            android:layout_width="match_parent"
+            android:layout_height="300sp"
+            android:layout_alignParentBottom="true"
+            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
+            android:orientation="vertical"
+            android:background="@color/yellow">
+
+            <LinearLayout
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center_horizontal"
+                android:orientation="vertical"
+                app:layout_constraintBottom_toTopOf="parent">
+
+                <Button
+                    android:id="@+id/TTT"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Tic Tac Toe"
+                    android:textColor="@color/white"
+                    android:background="@color/blue"
+                    android:textAllCaps="false"
+                    android:textSize="30sp"
+                    android:layout_marginTop="10sp"
+                    android:layout_marginBottom="10sp"/>
+
+                <Button
+                    android:id="@+id/Pres"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="President"
+                    android:textAllCaps="false"
+                    android:textSize="30sp" />
+
+                <Button
+                    android:id="@+id/Tiles"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Tiles"
+                    android:textAllCaps="false"
+                    android:textSize="30sp" />
+
+                <Button
+                    android:id="@+id/Game2048"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="2048"
+                    android:textAllCaps="false"
+                    android:textSize="30sp" />
+
+                <Button
+                    android:id="@+id/Blackjack"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Blackjack"
+                    android:textAllCaps="false"
+                    android:textSize="30sp" />
+
+                <Button
+                    android:id="@+id/Poker"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:text="Poker"
+                    android:textAllCaps="false"
+                    android:textSize="30sp" />
+
+                <Space
+                    android:layout_width="match_parent"
+                    android:layout_height="50sp" />
+
+                <Button
+                    android:id="@+id/settings"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:background="@color/orchid"
+                    android:text="SETTINGS"
+                    android:textAllCaps="true"
+                    android:textSize="30sp"
+                    android:layout_marginBottom="10sp"/>
+
+                <Button
+                    android:id="@+id/about"
+                    android:layout_width="300dp"
+                    android:layout_height="wrap_content"
+                    android:gravity="center"
+                    android:background="@color/orchid"
+                    android:text="ABOUT THIS APP"
+                    android:textAllCaps="true"
+                    android:textSize="30sp"
+                    android:longClickable="true"/>
+            </LinearLayout>
+        </android.support.v4.widget.NestedScrollView>
+    </RelativeLayout>
 
 
 </android.support.constraint.ConstraintLayout>
