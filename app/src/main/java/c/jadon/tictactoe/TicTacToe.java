@@ -23,20 +23,22 @@ import static android.widget.TextView.*;
 
 @TargetApi(16)
 public class TicTacToe extends MainActivity {
-    // To be implemented: pop up window displaying the winner
+    // TODO pop up window displaying the winner
     // For now, use the blinking textview of the winning piece at the top of the screen
 
-    public final int[] players = {R.id.X, R.id.Y};
+    public final int[] players = new int[] {R.id.X, R.id.Y};
     public String currentPlayer = "X";
-    protected String[][] board = {{"", "", ""}, {"", "", ""}, {"", "", ""}};
+    protected String[][] board = new String[][] {{"", "", ""}, {"", "", ""}, {"", "", ""}};
     protected boolean activateAI;
     private String winner;
     private int turnCount = 1;
-    TextView info;
-    private final int[] grid = {R.id.Position00, R.id.Position01, R.id.Position02, R.id.Position10, R.id.Position11,
-            R.id.Position12, R.id.Position20, R.id.Position21, R.id.Position22};
+    private TextView info;
+    private final int[] grid = new int[]{R.id.Position00, R.id.Position01, R.id.Position02,
+            R.id.Position10, R.id.Position11, R.id.Position12, R.id.Position20, R.id.Position21,
+            R.id.Position22};
     private Handler operateAI;
     MediaPlayer clickSound;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {

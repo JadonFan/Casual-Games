@@ -1,22 +1,22 @@
 package c.jadon.tictactoe;
 
+import android.app.Activity;
 
 import java.util.Random;
 
 // This class is used to set up a deck of cards and make references to some functions common
 // in many card games.
-public class cardGames {
-
+public class CardGames extends Activity {
     // Empty constructor (until I think of something necessary to put here)
-    public cardGames() {
+    public CardGames() {
 
     }
 
     private static class Card {
         int value;
-        String suit;
+        Suite suit;
 
-        private Card(int value, String suit) {
+        private Card(int value, Suite suit) {
             this.value = value;
             this.suit = suit;
         }
@@ -39,7 +39,7 @@ public class cardGames {
 
     public Deck createDeck() {
         Deck deck = null;
-        String[] suits = {"Diamond", "Heart", "Club", "Spades"};
+        Suite[] suits = Suite.values();
         for (int cardValue = 1; cardValue <= 13; cardValue++) {
             for (int i = 0; i < 4; i++) {
                 deck = new Deck(new Card(cardValue, suits[i]), deck);
@@ -82,4 +82,3 @@ public class cardGames {
         return deck;
     }
 }
-
