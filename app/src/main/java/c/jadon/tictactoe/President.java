@@ -25,6 +25,7 @@ public class President extends CardGames implements OnTouchListener{
     private CardGames[] playerHands = new CardGames[4];
     MotionEvent globalEvent;
 
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
